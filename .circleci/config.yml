@@ -2,12 +2,13 @@ version: 2
 jobs:
   build:
     docker:
-      - image: debian:stretch
+      - image: publysher/hugo:0.20
+    working_directory: ~/project
     steps:
       - checkout
       - run:
-          name: Greeting
-          command: echo Hello, World!
+          name: "Run Hugo"
+          command: HUGO_ENV=production hugo -v
       - run:
-          name: Print the current time
-          command: date
+          name: "Test Website"
+          command: htmlproofer src/public --allow-hash-ref --check-html --empty-alt-ignore --disable-external
