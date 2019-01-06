@@ -9,3 +9,24 @@ jobs:
       - run:
           name: "Run Hugo"
           command: HUGO_ENV=production hugo -v
+      - persist_to_workspace { root: "~/project", paths: ["public"] }
+  
+  deployment:
+    docker: [{ image: "circleci/python:latest" }]
+    working_directory: "~/project"
+    steps:
+      - attach_workspace: { at: "~/artifacts" }
+      - run:
+          name: "Push to S3"
+          command: 
+            pip install --user awscli
+            ./.local/bin/aws s3 sync ~/artifacts/public s3://gregkessman.com
+
+workflows:
+  version: 2
+  build-test-deploy:
+    jobs:
+      - build
+      - deployment:
+          requires: ["build"]
+          filters: { branches: { only: "master" } }

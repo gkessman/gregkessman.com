@@ -1,1 +1,4 @@
 **/.DS_Store
+public/*
+terraform/.terraform
+terraform/*.plan
