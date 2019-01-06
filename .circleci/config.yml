@@ -9,7 +9,10 @@ jobs:
       - run:
           name: "Run Hugo"
           command: HUGO_ENV=production hugo -v
-      - persist_to_workspace { root: "~/project", paths: ["public"] }
+      - persist_to_workspace:
+          root: "~/project" 
+          paths: 
+            - public/*
   
   deployment:
     docker: [{ image: "circleci/python:latest" }]
