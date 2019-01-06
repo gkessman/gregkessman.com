@@ -1,4 +1,5 @@
 version: 2
+
 jobs:
   build:
     docker:
@@ -8,7 +9,9 @@ jobs:
       - checkout
       - run:
           name: "Run Hugo"
-          command: HUGO_ENV=production hugo -v
+          command: |
+            HUGO_ENV=production hugo -v
+            ls -al
       - persist_to_workspace:
           root: "~/project" 
           paths: 
