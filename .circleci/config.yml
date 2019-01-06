@@ -23,7 +23,7 @@ jobs:
           at: ~/artifacts
       - run:
           name: "Push to S3"
-          command: aws s3 sync ~/artifacts/public s3://gregkessman.com
+          command: ./.local/bin/aws s3 sync ~/artifacts/public s3://gregkessman.com
 
 workflows:
   version: 2
