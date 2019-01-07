@@ -5,6 +5,7 @@ jobs:
     docker:
       - image: publysher/hugo:0.20
     working_directory: /gregkessman.com
+
     steps:
       - checkout
 
@@ -26,12 +27,9 @@ jobs:
     steps:
       - checkout
 
-      - attach_workspace:
-          at: /gregkessman.com
-
-      run:
-        name: Terraform
-        command: ./deploy/infra.sh
+      - run:
+          name: Terraform
+          command: ./deploy/infra.sh
   
   deploy:
     docker:
