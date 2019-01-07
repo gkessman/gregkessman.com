@@ -46,7 +46,7 @@ resource "aws_cloudfront_distribution" "web_s3" {
 
   enabled             = true
   default_root_object = "index.html"
-  aliases             = ["*.${var.domain}", "${var.domain}"]
+  aliases             = ["www.${var.domain}", "${var.domain}"]
   http_version        = "http2"
   is_ipv6_enabled     = true
 
@@ -93,4 +93,15 @@ resource "aws_cloudfront_distribution" "web_s3" {
 
 resource "aws_route53_zone" "main" {
   name = "gregkessman.com"
+}
+resource "aws_route53_record" "root_domain" {
+  zone_id = "${aws_route53_zone.main.zone_id}"
+  name = "${var.domain}"
+  type = "A"
+
+  alias {
+    name = "${aws_cloudfront_distribution.cdn.domain_name}"
+    zone_id = "${aws_cloudfront_distribution.cdn.hosted_zone_id}"
+    evaluate_target_health = false
+  }
 }
