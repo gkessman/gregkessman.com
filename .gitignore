@@ -1,5 +1,5 @@
 **/.DS_Store
 public/*
-terraform/.terraform
-terraform/*.plan
+infra/.terraform
+infra/*.plan
 .circleci/run-build-locally.sh
