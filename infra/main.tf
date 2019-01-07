@@ -100,8 +100,8 @@ resource "aws_route53_record" "root_domain" {
   type = "A"
 
   alias {
-    name = "${aws_cloudfront_distribution.cdn.domain_name}"
-    zone_id = "${aws_cloudfront_distribution.cdn.hosted_zone_id}"
+    name = "${aws_cloudfront_distribution.web_s3.domain_name}"
+    zone_id = "${aws_cloudfront_distribution.web_s3.hosted_zone_id}"
     evaluate_target_health = false
   }
 }
