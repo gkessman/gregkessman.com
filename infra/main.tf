@@ -53,7 +53,7 @@ resource "aws_cloudfront_distribution" "web_s3" {
   default_cache_behavior {
       target_origin_id = "s3-${var.bucket_name}"
       allowed_methods  = ["HEAD", "GET"]
-      cached_mehods    = ["HEAD", "GET"]
+      cached_methods    = ["HEAD", "GET"]
 
       forwarded_values {
           query_string = false
@@ -66,7 +66,7 @@ resource "aws_cloudfront_distribution" "web_s3" {
       viewer_protocol_policy = "redirect-to-https"
       min_ttl                = 0
       max_ttl                = 31536000
-      default_root_object    = 86400
+      default_ttl            = 86400
       compress               = true
   }
 
@@ -91,6 +91,6 @@ resource "aws_cloudfront_distribution" "web_s3" {
   }
 }
 
-resource "aws_route53" "main" {
+resource "aws_route53_zone" "main" {
   name = "gregkessman.com"
 }
