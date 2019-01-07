@@ -10,16 +10,10 @@ terraform {
     }
 }
 
-variable "region" {
-  description = "AWS region to provision resources"
-  type        = "string"
-  default     = "us-east-1"
-}
-
 provider "aws" {
-  alias = "virginia"
+  alias               = "virginia"
   allowed_account_ids = [697137303006]
-  region              = "${var.region}"
+  region              = "us-east-1"
 }
 
 variable "domain" {
