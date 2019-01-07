@@ -51,12 +51,12 @@ workflows:
   build:
     jobs:
       - build
-      -infra:
-         requires:
-          - build
-         filters:
-           branches:
-             only: master
+      - infra:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
       - deploy:
           requires:
             - build
