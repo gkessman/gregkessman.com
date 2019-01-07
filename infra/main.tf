@@ -59,7 +59,7 @@ resource "aws_cloudfront_distribution" "web_s3" {
           query_string = false
 
           cookies {
-              forward = "none"
+            forward = "none"
           }
       }
       

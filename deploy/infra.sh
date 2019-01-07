@@ -24,7 +24,7 @@ terraform plan -detailed-exitcode -out=this.plan
 
 if [[ $? == 1 ]]; then
   echo
-  echo "Encountered an error during `terraform plan`."
+  echo "Encountered an error during 'terraform plan'."
   echo "Exiting."
   exit 1
 else
