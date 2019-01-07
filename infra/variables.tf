@@ -11,8 +11,12 @@ terraform {
 }
 
 provider "aws" {
-  alias               = "virginia"
   allowed_account_ids = [697137303006]
+  region              = "us-east-1"
+}
+
+provider "aws" {
+  alias               = "east"
   region              = "us-east-1"
 }
 
@@ -31,5 +35,5 @@ variable "bucket_name" {
 data "aws_acm_certificate" "web" {
   domain   = "${var.domain}"
   statuses = ["ISSUED", "PENDING_VALIDATION"]
-  provider = "aws.virginia"
+  provider = "aws.east"
 }
