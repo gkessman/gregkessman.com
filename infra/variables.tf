@@ -2,7 +2,6 @@ terraform {
     required_version = ">= 0.11.2"
 
     backend "s3" {
-        profile         = "kessmgr"
         bucket          = "tf-remote-state-gregkessman"
         key             = "terraform.tfstate"
         region          = "us-east-1"
@@ -18,7 +17,6 @@ variable "region" {
 }
 
 provider "aws" {
-  profile             = "kessmgr"
   allowed_account_ids = [697137303006]
   region              = "${var.region}"
 }
