@@ -29,7 +29,7 @@ jobs:
 
       - run:
           name: Terraform
-          command: ./deploy/infra.sh
+          command: sh deploy/infra.sh
   
   deploy:
     docker:
@@ -44,7 +44,7 @@ jobs:
 
       - run:
           name: "S3"
-          command: ./deploy/site.sh
+          command: sh deploy/site.sh
 
 workflows:
   version: 2
