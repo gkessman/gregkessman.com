@@ -22,7 +22,7 @@ jobs:
   infra:
     working_directory: /gregkessman.com
     docker:
-      - image: hashicorp/terraform:0.11.11
+      - image: kessmgr/terraform:latest
 
     steps:
       - checkout
@@ -33,7 +33,7 @@ jobs:
   
   deploy:
     docker:
-      - image: hashicorp/terraform:0.11.11
+      - image: kessmgr/terraform:latest
     working_directory: /gregkessman.com
 
     steps:
