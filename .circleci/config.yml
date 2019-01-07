@@ -15,7 +15,7 @@ jobs:
             HUGO_ENV=production hugo -v
 
       - persist_to_workspace:
-          root: "~/project" 
+          root: /gregkessman.com
           paths: 
             - public/*
 
