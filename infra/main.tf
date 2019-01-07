@@ -16,7 +16,7 @@ resource "aws_s3_bucket" "web" {
             "Principal": {
                 "CanonicalUser": "${aws_cloudfront_origin_access_identity.s3.s3_canonical_user_id}"
             },
-            "Action": "s3.GetObject",
+            "Action": "s3:GetObject",
             "Resource": "arn.aws:s3:::${var.bucket_name}/*"
         }
     ]
