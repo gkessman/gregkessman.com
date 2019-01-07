@@ -29,7 +29,9 @@ jobs:
 
       - run:
           name: Terraform
-          command: ./deploy/infra.sh
+          command: |
+            ls -al
+            ./deploy/infra.sh
   
   deploy:
     docker:
