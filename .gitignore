@@ -2,3 +2,4 @@
 public/*
 terraform/.terraform
 terraform/*.plan
+.circleci/run-build-locally.sh
