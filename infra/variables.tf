@@ -17,6 +17,7 @@ variable "region" {
 }
 
 provider "aws" {
+  alias = "virginia"
   allowed_account_ids = [697137303006]
   region              = "${var.region}"
 }
@@ -36,4 +37,5 @@ variable "bucket_name" {
 data "aws_acm_certificate" "web" {
   domain   = "${var.domain}"
   statuses = ["ISSUED", "PENDING_VALIDATION"]
+  provider = "aws.virginia"
 }
